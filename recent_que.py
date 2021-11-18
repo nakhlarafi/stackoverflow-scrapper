@@ -13,7 +13,6 @@ from operator import itemgetter
 URL = 'https://stackoverflow.com/questions/tagged/android'
 PAGE_LIMIT = 1000000000000
 
-app = Flask(__name__)
 
 def build_url(base_url=URL, tab='newest', page=1, page_size=15):
     return f"{base_url}?tab={tab}&page={page}&{page_size}" # example: stackoverflow
