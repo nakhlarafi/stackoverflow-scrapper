@@ -29,20 +29,30 @@
     <section class="section">
       <div class="container">
         <div class="content is-medium">
-          {% for b in beer %}
-          <h1><a href="{{ b['url'] }}">{{ b['question'] }}</a></h1>
-          <h2>Votes: {{ b['question_votes'] }}</h2>
-          {{ b['description'] | safe }} {% endfor %}
+          {% for b in que %}
+          <h1>
+            <a href="{{ b['question_url'] }}">{{ b['question_title'] }}</a>
+          </h1>
+          <h2>Votes: {{ b['question_vote'] }}</h2>
+          {{ b['question_description'] | safe }} {% endfor %}
           <br />
-          <h2>Answers:</h2>
-          <br />
-          {% for b in beer %} {% for c in b['answers'] %}
-          <h2>Comment votes: {{c['comment_vote']}}</h2>
+          <h2>Total Answers: {{count}}</h2>
+          {% for b in ans %}
+          {% if b['answer_accepted'] %}
+          <h3>Comment votes: {{b['answer_vote']}}</h2>
+            <h5>This answer was accepted by the user</h3>
+            {{ b['answer_body'] | safe }}
+            {% endif %}
 
-          {{ c['html_data'] | safe }}
-          <br />
+          {%endfor %}
 
-          {%endfor %} {% endfor %}
+          {% for b in ans %}
+          {% if not b['answer_accepted'] %}
+          <h3>Comment votes: {{b['answer_vote']}}</h2>
+
+            {{ b['answer_body'] | safe }}
+            {% endif %}
+          {%endfor %}
         </div>
       </div>
     </section>
