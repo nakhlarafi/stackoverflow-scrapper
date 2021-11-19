@@ -14,7 +14,7 @@ URL = 'https://stackoverflow.com/questions/tagged/android'
 
 def scrape_question_page(url):
     # Function to scrap a single page
-    response = requests.get("https://stackoverflow.com/questions/43737728/push-method-returns-the-length-of-array-instead-of-array-javascript")
+    response = requests.get(url)
     page_questions = []
     soup = BeautifulSoup(response.text, 'html.parser')
     question_title = soup.find('a', class_='question-hyperlink').text
