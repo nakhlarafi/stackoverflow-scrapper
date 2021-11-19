@@ -20,7 +20,7 @@ voted questions in the past week
 def top_weekly_posts():
     questions_gathered = top_voted_question.scrape_for_week()
     que = questions_gathered[0:10]
-    return render_template('index.html', que=que, scrape_method='Top 10 Most Voted Android related questions')
+    return render_template('index.html', que=que, scrape_method='Top 10 Most Voted Android related questions in last 7 days')
 
 """
 Calls the function that generates the top 10 
