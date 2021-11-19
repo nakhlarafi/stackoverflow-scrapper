@@ -39,7 +39,7 @@
           <h2>Total Answers: {{count}}</h2>
           {% for b in ans %}
           {% if b['answer_accepted'] %}
-          <h3>Comment votes: {{b['answer_vote']}}</h2>
+          <h3>Answer votes: {{b['answer_vote']}}</h2>
             <h5 style="color:#087f23">This answer was accepted by the user</h3>
             {{ b['answer_body'] | safe }}
             {% endif %}
@@ -48,7 +48,7 @@
 
           {% for b in ans %}
           {% if not b['answer_accepted'] %}
-          <h3>Comment votes: {{b['answer_vote']}}</h2>
+          <h3>Answer votes: {{b['answer_vote']}}</h2>
 
             {{ b['answer_body'] | safe }}
             {% endif %}
