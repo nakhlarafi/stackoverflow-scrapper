@@ -16,6 +16,7 @@ app = Flask(__name__)
 Calls the function that generates the top 10 most
 voted questions in the past week
 """
+
 @app.route('/top_voted_question')
 def top_weekly_posts():
     questions_gathered = top_voted_question.scrape_for_week()
