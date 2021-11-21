@@ -49,4 +49,4 @@ def get_beer():
     questions_gathered = recent_que.scrape()
     que = questions_gathered[0:10]
     #print(beer)
-    return render_template('index.html', que=que, scrape_method='Most Recent 10 Questions')
+    return render_template('index.html', que=que, scrape_method='10 Newest Questions')
