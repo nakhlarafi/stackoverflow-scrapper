@@ -36,6 +36,11 @@
           <h2>Votes: {{ b['question_vote'] }}</h2>
           {{ b['question_description'] | safe }} {% endfor %}
           <br />
+          <h2 style="color: rebeccapurple;">Most Useful Comment: </h2>
+          <h3 style="color: rebeccapurple;">Vote: {{ comment['comment_vote'] }}</h3>
+          <h4 style="color: rebeccapurple;">{{ comment['comment_desc'] | safe}}</h4>
+          
+          <br/>
           <h2>Total Answers: {{count}}</h2>
           {% for b in ans %}
           {% if b['answer_accepted'] %}

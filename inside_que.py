@@ -1,3 +1,4 @@
+from bs4.element import Comment
 from flask import Flask, render_template
 import requests
 import json
@@ -22,6 +23,31 @@ def scrape_question_page(url):
     question = soup.find('div', class_='question')
     question_description = question.find('div', class_='s-prose js-post-body')
     question_vote = question.find('div', class_="js-vote-count flex--item d-flex fd-column ai-center fc-black-500 fs-title").text
+    
+    question_comments = question.find_all('li', class_='comment js-comment')
+    #print(question_comments)
+    
+
+    comment_list = []
+    for c in question_comments:
+        comment_vote = c.find(class_='comment-score js-comment-edit-hide').text.strip()
+        
+        if comment_vote == '':
+            comment_vote = '0'
+
+        comment_description = c.find(class_='comment-copy')
+        
+        comment_list.append({
+            'comment_vote' : int(comment_vote),
+            'comment_desc' : comment_description
+        })
+    if len(comment_list) > 0:
+        comment_list = sorted(comment_list, key=itemgetter('comment_vote'), reverse=True)
+    else:
+        comment_list = [{
+            'comment_vote' : 0,
+            'comment_desc' : "No comments"
+        }]
 
     question_list = [{
         'question_title': question_title,
@@ -47,8 +73,8 @@ def scrape_question_page(url):
             'answer_accepted': acceptance
         })
         answers_count += 1
-    #print(answers_count)
-    page_questions = [question_list,answer_list, answers_count]
+    
+    page_questions = [question_list,answer_list, answers_count, comment_list[0]]
 
     return page_questions
         

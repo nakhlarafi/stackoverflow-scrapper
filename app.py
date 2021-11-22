@@ -39,7 +39,7 @@ Calls the function that shows the full thread
 def question_inside():
     url = request.args.get('url')
     questions_gathered = inside_que.scrape(url)
-    return render_template('que.html', que=questions_gathered[0], ans=questions_gathered[1], count = questions_gathered[2])
+    return render_template('que.html', que=questions_gathered[0], ans=questions_gathered[1], count = questions_gathered[2], comment=questions_gathered[3])
 
 """
 Home page call
