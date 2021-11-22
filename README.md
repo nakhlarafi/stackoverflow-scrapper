@@ -17,3 +17,4 @@
 - User can click the titles and see the full thread.
 - In the full thread the one comment that was accepted by the owner will be shown first.
 - Votes can be seen too as well as the time the question was posted.
+- Users can see the top voted comment in the main thread.
