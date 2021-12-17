@@ -1,21 +1,23 @@
-from flask import Flask, render_template
 import requests
 from typing import Text
 from bs4 import BeautifulSoup
 import requests
-import os
-import sys
 import datetime
 from datetime import date
-from pprint import pprint
 from operator import itemgetter
 
 URL = 'https://stackoverflow.com/questions/tagged/android'
 PAGE_LIMIT = 1000000000000
 
+'''
+Generatates an URL of the pages
+'''
 def build_url(base_url=URL, tab='newest', page=1, page_size=50):
     return f"{base_url}?tab={tab}&page={page}&{page_size}" # example: stackoverflow
 
+'''
+This function scraps all the pages that contain questions of the past 7 days
+'''
 def scrape_page_v2(page=1):
     today_date = str(date.today()).split('-')
     today_date = list(map(int, today_date))

@@ -1,17 +1,15 @@
 from bs4.element import Comment
 from flask import Flask, render_template
 import requests
-import json
 from typing import Text
 from bs4 import BeautifulSoup
-import requests
-import os
-import sys
-import datetime
-from pprint import pprint
 from operator import itemgetter
 
 URL = 'https://stackoverflow.com/questions/tagged/android'
+
+'''
+Scraps the answers and top voted comment of the question. It also takes the accepted answer from the user and shows it in the first answer.
+'''
 
 def scrape_question_page(url):
     # Function to scrap a single page

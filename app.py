@@ -1,14 +1,7 @@
 from flask import Flask, render_template, request
-import requests
-import json
-from typing import Text
-from bs4 import BeautifulSoup
-import requests
 import recent_que
 import top_voted_question
 import inside_que
-
-
 
 app = Flask(__name__)
 

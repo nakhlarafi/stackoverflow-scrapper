@@ -1,22 +1,20 @@
 from flask import Flask, render_template
 import requests
-import json
-from typing import Text
 from bs4 import BeautifulSoup
 import requests
-import os
-import sys
-import datetime
-from pprint import pprint
-from operator import itemgetter
 
 URL = 'https://stackoverflow.com/questions/tagged/android'
 PAGE_LIMIT = 1000000000000
 
-
+'''
+Generates an URL
+'''
 def build_url(base_url=URL, tab='newest', page=1, page_size=15):
     return f"{base_url}?tab={tab}&page={page}&{page_size}" # example: stackoverflow
 
+'''
+Scraps top 10 recent questions in a dictionary
+'''
 def scrape_page_v2(page=1):
     # Function to scrap a single page
     response = requests.get(build_url(page=page))
